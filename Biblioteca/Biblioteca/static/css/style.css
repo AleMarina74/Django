@@ -5,7 +5,6 @@
 
 a {
     text-decoration: none;
-    color: black;
 }
 
 a:hover{
@@ -14,16 +13,17 @@ a:hover{
 
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 0 20px;
+    background-color: #1D5978;
 }
 
 header{
     position: relative;
+    background-color: white;
+    color: #1D5978;
 }
 
-header,
-footer{
-    padding: 20px 0;
+header nav h1{
+    font-size: 28px;
 }
 
 header nav,
@@ -38,8 +38,12 @@ header nav ul{
     justify-content: flex-end;
 }
 
+header nav ul a{
+    font-size: 20px;
+}
+
 header nav{
-    width: 100%;
+    padding: 20px 40px;
     height: 40px;
     align-items: center;
 }
@@ -48,6 +52,10 @@ header nav ul,
 footer ul{
     width: 100%;
     list-style: none;
+    padding: 20px 40px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 header nav ul li,
@@ -64,25 +72,30 @@ header nav .logo{
 header nav .logo img{
     max-width: 100%;
     max-height: 100%;
-    display: block; /* remove extra space below image */
+    display: block;
 }
 
 header .banner{
     position: relative;
+    text-align: right;
+    height: 160px;
+    padding-top: 40px;
 }
 
 header .banner h2{
     position: absolute;
-    bottom: 0;
+    top: calc(50% - 48px);
     left: 0;
     font-size: 48px;
-    padding: 20px;
-    color: white;
-    text-shadow: 1px 1px 5px black;
+    padding: 0 40px;
+    line-height: 52px;
+    text-align: left;
 }
 
 header .banner img{
-    width: 100%;
+    padding-right: 40px;
+    max-width: 100%;
+    height: inherit;
 }
 
 main{
