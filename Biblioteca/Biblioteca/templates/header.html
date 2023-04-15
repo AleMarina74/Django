@@ -1,0 +1,20 @@
+<header>
+    {% load static %}
+    <nav>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+            <a href="/"><h1>Biblioteca</h1></a>
+        </div>
+
+        <ul>
+            <li><a href="/libros">Libros</a></li>
+            <li><a href="/clientes">Clientes</a></li>
+            <li><a href="#">Prestamos</a></li>
+        </ul>
+    </nav>
+
+    <div class="banner">
+        <h2>{% block heading_2 %}{% firstof encabezado "Mesa de Entrada" %}{% endblock %}</h2>
+        <img src="{% static 'images/banner.jpg' %}" alt="banner">
+    </div>
+</header>
