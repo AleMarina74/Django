@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block heading_2 %}
+{{ encabezado }}
+{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                {% for key in field_keys %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% if libros|length %}
+                {% for libro in libros %}
+                    <tr>
+                        <td>{{ libro.id }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="{{ field_keys|length }}">No hay libros</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
