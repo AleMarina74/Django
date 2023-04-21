@@ -7,8 +7,25 @@ a {
     text-decoration: none;
 }
 
-a:hover{
+a,
+a:active,
+a:visited{
+  color: #1D5978;
+}
+
+a:hover:not(.button){
     text-decoration: underline;
+}
+
+a.button{
+  background-color: #1D5978;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+a.button i{
+  margin-right: 8px;
 }
 
 body{
@@ -27,18 +44,24 @@ header nav h1{
 }
 
 header nav,
-header nav ul,
+header nav > ul,
 footer,
-footer ul{
+footer > ul{
     display: flex;
     justify-content: space-between;
 }
 
-header nav ul{
+header nav > ul{
     justify-content: flex-end;
 }
 
-header nav ul a{
+header nav ul.sub--menu{
+  position: absolute;
+  margin-top: 16px;
+  z-index: 1;
+}
+
+header nav > ul a{
     font-size: 20px;
 }
 
@@ -48,8 +71,8 @@ header nav{
     align-items: center;
 }
 
-header nav ul,
-footer ul{
+header nav > ul,
+footer > ul{
     width: 100%;
     list-style: none;
     padding: 20px 40px;
@@ -58,8 +81,8 @@ footer ul{
     font-size: 20px;
 }
 
-header nav ul li,
-footer ul li{
+header nav > ul > li,
+footer > ul > li{
     padding: 0 20px;
 }
 
