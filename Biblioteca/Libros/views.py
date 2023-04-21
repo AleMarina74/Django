@@ -2,12 +2,10 @@ from django.shortcuts import render
 from .models import Libro
 from django.contrib.auth.decorators import login_required
 
-ENCABEZADO = "Libros"
-
 @login_required(login_url='ingresar')
 def libros(request):
     context = {
-        "encabezado":ENCABEZADO,
+        "encabezado": "Libros",
         "libros": Libro.objects.all(),
         "field_keys": [field.attname for field in Libro._meta.get_fields()],
         "USER": request.user

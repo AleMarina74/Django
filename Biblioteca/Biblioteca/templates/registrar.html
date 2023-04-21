@@ -3,8 +3,14 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Registrar</button>
+        {% for field in form %}
+            <fieldset>
+                <label for="{{ field.id_for_label }}" class="{% if field.field.required %}required{% endif %}">{{ field.label }}</label>
+                {{ field }}
+            </fieldset>
+        {% endfor %}
+        <p role="alert">Los campos con un asterisco <span aria-hidden="true">(*)</span> son requeridos</p>
+        <input type="submit" value="Registrar">
         {{ form.errors }}
     </form>
 {% endblock %}

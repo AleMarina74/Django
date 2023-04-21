@@ -4,15 +4,21 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-ENCABEZADO = "Mesa de Entrada"
-
 @login_required(login_url='ingresar')
 def inicio(request):
     context = {
-        "encabezado": ENCABEZADO,
+        "encabezado": "Mesa de Entrada",
         "USER": request.user 
     }
     return render(request=request, template_name='base.html', context=context)
+
+@login_required(login_url='ingresar')
+def perfil(request):
+    context = {
+        "encabezado": "Mi Perfil",
+        "USER": request.user 
+    }
+    return render(request=request, template_name='perfil.html', context=context)
 
 def ingresar(request):
     if request.method == 'POST':
