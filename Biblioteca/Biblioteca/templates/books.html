@@ -10,10 +10,10 @@
             </tr>
         </thead>
         <tbody>
-            {% if libros|length %}
-                {% for libro in libros %}
+            {% if books|length %}
+                {% for libro in books %}
                     <tr>
-                        <td>{{ libro.id }}</td>
+                        <td><a href="{% url 'book' id=libro.id %}">{{ libro.id }}</a></td>
                     </tr>
                 {% endfor %}
             {% else %}
