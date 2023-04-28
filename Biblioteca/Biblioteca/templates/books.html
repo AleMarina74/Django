@@ -11,9 +11,14 @@
         </thead>
         <tbody>
             {% if books|length %}
-                {% for libro in books %}
+                {% for book in books %}
                     <tr>
-                        <td><a href="{% url 'book' id=libro.id %}">{{ libro.id }}</a></td>
+                        <td>{{ book.id }}</td>
+                        <td>{{ book.USBN }}</td>
+                        <td><a href="{% url 'book' id=book.id %}">{{ book.titulo }}</a></td>
+                        <td>{{ book.autor }}</td>
+                        <td>{{ book.estado }}</td>
+                        <td>{{ book.dni }}</td>
                     </tr>
                 {% endfor %}
             {% else %}

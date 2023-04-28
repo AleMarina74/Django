@@ -169,16 +169,19 @@ footer{
 table {
     border: 1px solid #1C6EA4;
     background-color: #EEEEEE;
-    width: 100%;
     text-align: left;
     border-collapse: collapse;
+    width: 720px;
+    margin: 0 auto;
+    margin-top: 16px;
   }
 table td, table th {
   border: 1px solid #AAAAAA;
   padding: 3px 2px;
 }
 table tbody td {
-  font-size: 13px;
+  font-size: 16px;
+  padding: 8px;
 }
 table tr:nth-child(even) {
   background: #D0E4F5;
@@ -191,10 +194,13 @@ table thead {
   border-bottom: 2px solid #444444;
 }
 table thead th {
-  font-size: 15px;
+  text-transform: capitalize;
+  font-size: 18px;
   font-weight: bold;
   color: #FFFFFF;
   border-left: 2px solid #D0E4F5;
+  text-align: center;
+  padding: 8px;
 }
 table thead th:first-child {
   border-left: none;
