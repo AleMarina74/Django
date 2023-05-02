@@ -1,12 +1,15 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from .models import Libro
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='ingresar')
 def books(request):
+    paginator = Paginator(Libro.objects.all(), 10)
+    page_number = request.GET.get("page")
     context = {
         "page_heading": "Libros",
-        "books": Libro.objects.all(),
+        "books": paginator.get_page(page_number),
         "field_keys": [field.attname for field in Libro._meta.get_fields()],
         "USER": request.user
     }

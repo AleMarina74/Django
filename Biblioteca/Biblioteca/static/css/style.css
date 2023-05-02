@@ -32,6 +32,8 @@ a.button i{
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #1D5978;
+    position: relative;
+    min-height: 100vh;
 }
 
 header{
@@ -148,6 +150,7 @@ header .banner img{
 
 main{
     height: auto;
+    padding-bottom: 2.5rem;
 }
 
 main h3{
@@ -159,10 +162,10 @@ main h3{
 }
 
 footer{
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
 
 /* table */
@@ -274,4 +277,21 @@ form > input[type="submit"]{
   border: 2px solid white;
   font-weight: bold;
   cursor: pointer;
+}
+
+div.pagination{
+  text-align: center;
+  width: 720px;
+  margin-top: 16px;
+  margin: 0 auto;
+}
+
+div.pagination span{
+  color: white;
+}
+
+div.pagination a{
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
 }

@@ -28,4 +28,22 @@
             {% endif %}
         </tbody>
     </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if books.has_previous %}
+                <a href="?page=1">&laquo; primera</a>
+                <a href="?page={{ books.previous_page_number }}">anterior</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ books.number }} de {{ books.paginator.num_pages }}.
+            </span>
+    
+            {% if books.has_next %}
+                <a href="?page={{ books.next_page_number }}">siguiente</a>
+                <a href="?page={{ books.paginator.num_pages }}">última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock %}
