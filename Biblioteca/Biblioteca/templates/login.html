@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+        {% csrf_token %}
+        <fieldset>
+            <label for="username" class="required">Nombre de usuario</label>
+            <input type="text" name="username" id="username" required="true">
+        </fieldset>
+        <fieldset>
+            <label for="password" class="required">Contraseña</label>
+            <input type="password" name="password" id="password" required="true">
+        </fieldset>
+        <p role="alert">Los campos con un asterisco <span aria-hidden="true">(*)</span> son requeridos</p>
+        <input type="submit" value="Ingresar">
+    </form>
+{% endblock %}
