@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                {% for key in field_keys %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% if clients|length %}
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ client.id }}</td>
+                        <td>{{ client.nombre}}</td>
+                        <td><a href="{% url 'client' id=client.id %}">{{ client.apellido }}</a></td>
+                        <td>{{ client.dni }}</td>
+                        <td>{{ client.celular }}</td>
+                        <td>{{ client.domicilio }}</td>
+                        {% if client.estado > 0 %}
+                            <td>{{ client.estado }}</td>
+                            <td>{{ client.ISBN }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="{{ field_keys|length }}">No hay client</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if clients.has_previous %}
+                <a href="?page=1">&laquo; primera</a>
+                <a href="?page={{ clients.previous_page_number }}">anterior</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ clients.number }} de {{ clients.paginator.num_pages }}.
+            </span>
+    
+            {% if clients.has_next %}
+                <a href="?page={{ clients.next_page_number }}">siguiente</a>
+                <a href="?page={{ clients.paginator.num_pages }}">última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

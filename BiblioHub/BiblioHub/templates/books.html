@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                {% for key in field_keys %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% if books|length %}
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.id }}</td>
+                        <td><a href="{% url 'book' id=book.id %}">{{ book.titulo }}</a></td>
+                        <td>{{ book.autor.nombre }}</td>
+                        <td>{{ book.genero.nombre }}</td>
+                        <td>{{ book.isbn }}</td>
+                        <td>
+                            {% if book.borrado %}
+                                <input type="checkbox" checked disabled>
+                            {% else %}
+                                <input type="checkbox" disabled>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if book.disponible %}
+                                <input type="checkbox" checked disabled>
+                            {% else %}
+                                <input type="checkbox" disabled>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="{{ field_keys|length }}">No hay libros</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if books.has_previous %}
+                <a href="?page=1">&laquo; primera</a>
+                <a href="?page={{ books.previous_page_number }}">anterior</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ books.number }} de {{ books.paginator.num_pages }}.
+            </span>
+    
+            {% if books.has_next %}
+                <a href="?page={{ books.next_page_number }}">siguiente</a>
+                <a href="?page={{ books.paginator.num_pages }}">última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    <a href="{% url 'create' %}" class="button">Nuevo libro</a>    
+{% endblock %}

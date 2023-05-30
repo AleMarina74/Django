@@ -1,0 +1,32 @@
+<header>
+    {% load static %}
+    <nav>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="logotipo el sitio">
+            <a href="{% url 'home' %}"><h1>Biblioteca</h1></a>
+        </div>
+
+        <ul>
+            {% if USER.is_authenticated %}
+                <li><a href="{% url 'books' %}">Libros</a></li>
+                <li><a href="{% url 'clients' %}">Clientes</a></li>
+                <li><a href="#">Prestamos</a></li>
+                <li class="has--submenu">
+                    <a href="#" class="button"><i class="fa-solid fa-user"></i>{{ USER }}</a>
+                    <ul class="sub--menu">
+                        <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
+                        <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Ingresar</a></li>
+                <li><a href="{% url 'signup' %}">Registrar</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="banner">
+        <h2>{% block heading_2 %}{{ page_heading }}{% endblock %}</h2>
+        <img src="{% static 'images/banner.jpg' %}" alt="banner">
+    </div>
+</header>

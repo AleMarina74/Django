@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>{{ book.titulo }}</h3>
+    <br>
+    <ol>
+        <li><label> AUTOR: </label>{{ book.autor.nombre }}</li>
+        <li><label> GENERO: </label>{{ book.genero.nombre }}</li>
+        <li><label> ISBN: </label>{{ book.isbn }}</td>
+    </ol>
+    <a href="{% url 'update' book.id %}">Editar</a>
+    <a href="{% url 'delete' book.id %}">Eliminar</a>
+{% endblock %}
