@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% csrf_token %}
+    <h1>Detalle del Libro</h1>
+    <br>
+   
+        <p>Título: {{ book.titulo }}</p>
+        <p>Autor: {{ book.autor.nombre }}</p>
+        <p>Genero: {{ book.genero.nombre }} </p>
+        <p>Isbn: {{ book.isbn }}</p>
+        <p>Borrado: {{ book.borrado }}</p>
+        <p>Disponible: {{ book.disponible }}</p>
+        <br>
+
+        <a href="{% url 'updatebook' book.id %}" class="button">Editar</a>
+        <a href="{% url 'deletebook' book.id %}" class="button">Eliminar</a>
+{% endblock %}

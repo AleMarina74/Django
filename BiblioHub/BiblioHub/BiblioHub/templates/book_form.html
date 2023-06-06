@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Crear/Actualizar Libro</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+        <a href="{% url 'createclient' %}" class="button">Nuevo cliente</a> 
+    </form>
+{% endblock %}
