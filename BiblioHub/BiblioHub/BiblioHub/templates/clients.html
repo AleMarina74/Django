@@ -15,7 +15,7 @@
                     <tr>
                         <td>{{ client.id }}</td>
                         <td>{{ client.nombre}}</td>
-                        <td><a href="{% url 'client' id=client.id %}">{{ client.apellido }}</a></td>
+                        <td><a href="{% url 'detailclient' pk=client.id %}">{{ client.apellido }}</a></td>
                         <td>{{ client.dni }}</td>
                         <td>{{ client.celular }}</td>
                         <td>{{ client.domicilio }}</td>

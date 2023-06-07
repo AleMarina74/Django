@@ -17,8 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import home, user_login, user_signup, user_logout, profile
-from apps.cliente.views import clients, client,ClientesTemplateView,ClienteCreate,ClienteUpdate,ClienteDetail
-from apps.libro.views import BooksTemplateView, book, BookTemplateView, BookCreate, BookDelete,BookDetail,BookList,BookUpdate
+from apps.cliente.views import ClientesTemplateView,ClienteCreate,ClienteUpdate,ClienteDetail,ClienteDelete
+from apps.libro.views import BooksTemplateView, BookTemplateView, BookCreate, BookDelete,BookDetail,BookList,BookUpdate
 
 urlpatterns = [
     path('', home, name='home'),
@@ -30,10 +30,10 @@ urlpatterns = [
     path('libros/<int:pk>/update/', BookUpdate.as_view(), name='updatebook'),
     path('libros/<int:pk>/delete/', BookDelete.as_view(), name='deletebook'),
     path('clientes/', ClientesTemplateView.as_view(), name='clients'),
-    #path('cliente/<int:id>', client, name='client'),
     path('cliente/create/', ClienteCreate.as_view(), name='createclient'),
-    path('cliente/<int:id>/', ClienteDetail.as_view(), name='detailclient'),
+    path('cliente/<int:pk>/', ClienteDetail.as_view(), name='detailclient'),
     path('cliente/<int:pk>/update/', ClienteUpdate.as_view(), name='updateclient'),
+    path('cliente/<int:pk>/delete/', ClienteDelete.as_view(), name='deleteclient'),
     path('perfil/', profile, name='profile'),
     path('ingresar/', user_login, name='login'),
     path('registrar/', user_signup, name='signup'),
