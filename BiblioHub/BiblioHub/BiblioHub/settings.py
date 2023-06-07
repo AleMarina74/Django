@@ -53,7 +53,11 @@ APPS_SISTEMAS =[
     'apps.utils',
 ] 
 
-INSTALLED_APPS= DJANGO_APPS + APPS_SISTEMAS
+THIRD_PARTY_APPS = [
+    'fontawesomefree',
+]
+
+INSTALLED_APPS= DJANGO_APPS + APPS_SISTEMAS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

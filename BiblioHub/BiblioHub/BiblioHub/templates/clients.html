@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% include 'create_button.html' with url_name='createclient' text='Nuevo Cliente' %}
+    
     <table>
         <thead>
             <tr>
@@ -50,5 +52,4 @@
             {% endif %}
         </span>
     </div>
-    <a href="{% url 'createclient' %}" class="button">Nuevo Cliente</a>
 {% endblock %}

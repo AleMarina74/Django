@@ -82,7 +82,7 @@ class BookUpdate(UpdateView):
     model = Libro
     template_name = 'book_form.html'
     fields = ['titulo', 'autor', 'genero', 'isbn','borrado','disponible']
-    success_url = reverse_lazy('books')
+    success_url = reverse_lazy('listbook')
 
 @method_decorator(login_required, name='dispatch')
 class BookDelete(DeleteView):

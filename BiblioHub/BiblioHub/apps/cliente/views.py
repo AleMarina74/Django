@@ -50,10 +50,10 @@ class ClienteUpdate(UpdateView):
     model = Cliente
     template_name = 'client_form.html'
     fields = ['nombre', 'apellido', 'dni', 'fecha_nacimiento','email','domicilio']
-    success_url = reverse_lazy('clientes')
+    success_url = reverse_lazy('clients')
 
 @method_decorator(login_required, name='dispatch')
 class ClienteDelete(DeleteView):
     model = Cliente
-    template_name = 'cliente_confirm_delete.html'
-    success_url = reverse_lazy('clientes')
+    template_name = 'client_confirm_delete.html'
+    success_url = reverse_lazy('clients')

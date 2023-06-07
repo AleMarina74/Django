@@ -43,6 +43,9 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+THIRD_PARTY_APPS = [
+    'fontawesomefree',
+]
 
 APPS_SISTEMAS =[
     'apps.autor',
@@ -50,10 +53,10 @@ APPS_SISTEMAS =[
     'apps.genero',
     'apps.libro',
     'apps.usuario',
-    'apps.utils',
+    'apps.utils'
 ] 
 
-INSTALLED_APPS= DJANGO_APPS + APPS_SISTEMAS
+INSTALLED_APPS= DJANGO_APPS + APPS_SISTEMAS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
