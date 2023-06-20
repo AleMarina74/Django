@@ -3,12 +3,12 @@
 {% block content %}
     <h1>Lista de Libros</h1>
 
-    <a href="{% url 'create' %}">Crear libro</a>
+    <a href="{% url 'createbook' %}">Crear libro</a>
 
     <ul>
         {% for book in books %}
             {% if not book.borrado %}
-                <li><a href="{% url 'detail' book.id %}">{{ book.titulo }}</a></li>
+                <li><a href="{% url 'detailbook' book.id %}">{{ book.titulo }}</a></li>
             {% endif %}
         {% empty %}
             <li>No hay libros disponibles.</li>

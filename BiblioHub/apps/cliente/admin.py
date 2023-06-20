@@ -6,6 +6,26 @@ from .models import Cliente
 class ClienteAdmin(admin.ModelAdmin):
     list_display=(
         'nombre',
-        'apellido')
+        'apellido',
+        'nombre',
+    )
+    
+    
+    list_filter=(
+        'active',
+        'disponible',
+    )
+    
+    ordering=(
+        'nombre',
+        'apellido',
+        'dni',
+    )
 
-# Register your models here.
+    search_fields=(
+        'nombre',
+        'apellido',
+        'dni',
+    )
+
+

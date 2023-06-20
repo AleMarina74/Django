@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                {% for key in field_keys %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% if prestamos|length %}
+                {% for prestamo in prestamos %}
+                    <tr>
+                        <td><a href="{% url 'prestamo' id=prestamo.id %}">{{ prestamo.id }}</a></td>
+                        <td>{{ prestamo.libro }}</td>
+                        <td>{{ prestamo.cliente }}</td>
+                        <td>{{ prestamo.fecha_prestamo }}</td>
+                        <td>{{ prestamo.fecha_devolucion }}</td>
+                        <td>
+                            {% if prestamo.devolucion %}
+                                <input type="checkbox" checked disabled>
+                            {% else %}
+                                <input type="checkbox" disabled>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="{{ field_keys|length }}">No hay Prestamos</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if prestamos.has_previous %}
+                <a href="?page=1">&laquo; primera</a>
+                <a href="?page={{ prestamo.previous_page_number }}">anterior</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ prestamo.number }} de {{ prestamo.paginator.num_pages }}.
+            </span>
+    
+            {% if prestamos.has_next %}
+                <a href="?page={{ prestamo.next_page_number }}">siguiente</a>
+                <a href="?page={{ prestamo.paginator.num_pages }}">última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    <a href="{% url 'createprestamo' %}" class="button">Nuevo Prestamo</a>    
+{% endblock %}

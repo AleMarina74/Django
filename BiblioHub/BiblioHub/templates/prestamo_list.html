@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de Prestamos</h1>
+
+    <ul>
+        {% for autor in autores %}
+
+            <li><a href="{% url 'detailprestamo' prestamo.id %}">{{ prestamo.fecha_prestamo }}</a></li>
+
+        {% empty %}
+            <li>No hay Prestamos cargados.</li>
+        {% endfor %}
+
+        <a href="{% url 'createprestamo' %}" class="button">Cargar Prestamo</a>
+        <a href="{% url 'prestamos' %}" class="button">Cancelar</a>
+    </ul>
+{% endblock %}
