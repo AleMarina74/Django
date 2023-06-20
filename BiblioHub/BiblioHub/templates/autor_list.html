@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de Autores</h1>
+
+    <a href="{% url 'createautor' %}">Crear Autor</a>
+    <a href="{% url 'books' %}" class="button">Cancelar</a>
+
+    <ul>
+        {% for autor in autores %}
+                <li><a href="{% url 'detailautor' autor.id %}">{{ autor.nombre }}</a></li>
+            {% endif %}
+        {% empty %}
+            <li>No hay autores disponibles.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

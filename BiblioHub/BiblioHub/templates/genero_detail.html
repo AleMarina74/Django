@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% csrf_token %}
+    <h1>Detalle del Genero</h1>
+    <br>
+        <p>Nombre: {{ genero.nombre }}</p> 
+        <br>
+
+        <a href="{% url 'updategenero' genero.id %}" class="button">Editar</a>
+        
+{% endblock %}

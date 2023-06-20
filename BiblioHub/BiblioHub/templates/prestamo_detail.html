@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% csrf_token %}
+    <h1>Detalle del Prestamo</h1>
+    <br>
+        <p>Id: {{ prestamo.id }}</p>
+        <p>Fecha de Prestamo: {{ prestamo.fecha_prestamo }}</p>
+        <p>Fecha de Devolucion: {{ prestamo.fecha_devolucion }}</p>
+        
+    <br>
+
+        <a href="{% url 'updateprestamo' prestamo.id %}" class="button">Editar</a>
+        <a href="{% url 'prestamos' %}" class="button">Cancelar</a>

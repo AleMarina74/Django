@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>{{ client.nombre }} {{ client.apellido }}</h3>
+    <br>
+
+    <ol>
+        <li><label> DNI: </label>{{ client.dni }}</li>
+        <li><label> e-mail: </label>{{ client.email }}</li>
+        <li><label> DOMICILIO: </label>{{ book.isbn }}</td>
+        <br>
+        {% if client.disponible %}
+            <li><label> DISPONIBILIDAD: Puede retirar libro </label> </li>
+        {% else%}
+            <li><label> DISPONIBILIDAD: No puede solicitar otro libro</label> </li>
+        {%endif%}
+        
+    </ol>
+    <a href="{% url 'updateclient' client.id %}" class="button">Editar</a>
+    <a href="{% url 'deleteclient' client.id %}" class="button">Eliminar</a>
+{% endblock %}

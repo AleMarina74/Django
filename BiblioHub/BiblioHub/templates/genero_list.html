@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Lista de Genero</h3>
+
+    <a href="{% url 'creategenero' %}">Crear Genero</a>
+    <a href="{% url 'books' %}" class="button">Cancelar</a>
+
+    <ul>
+        {% for genero in generos %}
+                <li><a href="{% url 'detailgeneros' genero.id %}">{{ genero.nombre }}</a></li>
+            {% endif %}
+        {% empty %}
+            <li>No hay generos disponibles.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

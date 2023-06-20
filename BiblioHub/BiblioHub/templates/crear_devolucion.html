@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Crear Devolución</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+
+      <button type="submit">Guardar Devolución</button>
+      <a href="{% url 'prestamos' %}" class="button">Cancelar</a>
+    </form>
+{% endblock %}
