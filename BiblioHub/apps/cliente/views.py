@@ -68,7 +68,7 @@ class ClienteCreate(LoginRequiredMixin, CreateView):
     model = Cliente
     template_name = 'client_form.html'
     fields = ['nombre', 'apellido', 'dni', 'fecha_nacimiento','email','domicilio']
-    success_url = reverse_lazy('clientes')
+    success_url = reverse_lazy('clients')
 
 
 class ClienteDetail(LoginRequiredMixin, DetailView):
@@ -81,12 +81,12 @@ class ClienteUpdate(LoginRequiredMixin, UpdateView):
     model = Cliente
     template_name = 'client_form.html'
     fields = ['nombre', 'apellido', 'dni', 'fecha_nacimiento','email','domicilio']
-    success_url = reverse_lazy('clientes')
+    success_url = reverse_lazy('clients')
 
 
 class ClienteDelete(LoginRequiredMixin, DeleteView):
     model = Cliente
     template_name = 'cliente_confirm_delete.html'
-    success_url = reverse_lazy('clientes')
+    success_url = reverse_lazy('clients')
 
 

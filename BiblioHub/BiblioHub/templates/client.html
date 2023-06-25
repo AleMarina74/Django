@@ -7,7 +7,7 @@
     <ol>
         <li><label> DNI: </label>{{ client.dni }}</li>
         <li><label> e-mail: </label>{{ client.email }}</li>
-        <li><label> DOMICILIO: </label>{{ client.domicilio }}</td>
+        <li><label> DOMICILIO: </label>{{ client.domicilio|default_if_none:"Sin información"|default:"Sin información" }}</td>
         <br>
         {% if client.disponible %}
             <li><label> DISPONIBILIDAD: Puede retirar libro </label> </li>
