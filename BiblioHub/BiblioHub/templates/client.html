@@ -7,7 +7,7 @@
     <ol>
         <li><label> DNI: </label>{{ client.dni }}</li>
         <li><label> e-mail: </label>{{ client.email }}</li>
-        <li><label> DOMICILIO: </label>{{ book.isbn }}</td>
+        <li><label> DOMICILIO: </label>{{ client.domicilio|default_if_none:"Sin información"|default:"Sin información" }}</td>
         <br>
         {% if client.disponible %}
             <li><label> DISPONIBILIDAD: Puede retirar libro </label> </li>
@@ -18,4 +18,5 @@
     </ol>
     <a href="{% url 'updateclient' client.id %}" class="button">Editar</a>
     <a href="{% url 'deleteclient' client.id %}" class="button">Eliminar</a>
+    <a href="{% url 'clients' %}" class="button">Cancelar</a>
 {% endblock %}

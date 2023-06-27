@@ -1,7 +1,7 @@
 from django.db import models
 
 class Genero (models.Model):
-    nombre= models.TextField(max_length=100)
+    nombre= models.CharField(max_length=200)
     
     def __str__(self):
         return self.nombre

@@ -23,3 +23,19 @@ class Cliente(Persona):
     def devuelto(self):
         self.disponible = True
         super().save()
+
+    def borrado_logico(self):
+        if self.active:
+            self.active = False
+            self.disponible = False
+            super().save()
+
+    def restarurar(self):
+        if self.active == False:
+            self.active = True
+            self.disponible = True
+            super().save()
+
+    def delete(self,*args,**kwargs):
+        self.borrado_logico()
+   

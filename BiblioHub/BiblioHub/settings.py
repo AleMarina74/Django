@@ -51,13 +51,10 @@ APPS_SISTEMAS =[
     'apps.libro',
     'apps.usuario',
     'apps.utils',
+    'apps.prestamo',
 ] 
 
-THIRD_PARTY_APPS = [
-    'fontawesomefree',
-]
-
-INSTALLED_APPS= DJANGO_APPS + APPS_SISTEMAS + THIRD_PARTY_APPS
+INSTALLED_APPS= DJANGO_APPS + APPS_SISTEMAS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

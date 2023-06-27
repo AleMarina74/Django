@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
-{% block heading_2 %}{{ book.titulo }}{% endblock %}
-
 {% block content %}
     <h3>{{ book.titulo }}</h3>
+    
     <br>
     <ol>
         <li><label> AUTOR: </label>{{ book.autor.nombre }}</li>
@@ -19,4 +18,5 @@
     </ol>
     <a href="{% url 'updatebook' book.id %}" class="button">Editar</a>
     <a href="{% url 'deletebook' book.id %}" class="button">Eliminar</a>
+    <a href="{% url 'books' %}" class="button">Cancelar</a>
 {% endblock %}

@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 
-{% block heading_2 %}{{ cliente }}{% endblock %}
-
 {% block content %}
     <h3>Crear/Actualizar Cliente</h3>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_div }}
+        {{ form.as_p }}
         <button type="submit">Guardar</button>
-        {% if cliente %}
-            <a class="cancel" href="#" onclick="history.back()">Cancelar</a>
-        {% endif %}
+        <a href="{% url 'clients' %}" class="button">Cancelar</a>
     </form>
 {% endblock %}

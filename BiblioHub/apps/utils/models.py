@@ -21,8 +21,7 @@ class Persona(models.Model):
     fecha_nacimiento = models.DateField()
     email = models.EmailField()
     deleted_at = models.DateTimeField(default=None, null=True, blank=True)
-    active = models.BooleanField(default=True)
-
+    active = models.BooleanField(default=True,verbose_name="Activo")
     objects_all = models.Manager()
     objects = PersonaManager()
 
