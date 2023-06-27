@@ -4,8 +4,8 @@
     <table>
         <thead>
             <tr>
-                {% for key in field_keys %}
-                    <th>{{ key }}</th>
+                {% for field in fields %}
+                    <th>{{ field.name }}</th>
                 {% endfor %}
             </tr>
         </thead>
@@ -13,9 +13,9 @@
             {% if prestamos|length %}
                 {% for prestamo in prestamos %}
                     <tr>
-                        <td><a href="{% url 'prestamo' id=prestamo.id %}">{{ prestamo.id }}</a></td>
+                        
                         <td>{{ prestamo.libro }}</td>
-                        <td>{{ prestamo.cliente }}</td>
+                        <td><a href="{% url 'prestamo' id=prestamo.id %}">{{ prestamo.cliente }}</a></td>
                         <td>{{ prestamo.fecha_prestamo }}</td>
                         <td>{{ prestamo.fecha_devolucion }}</td>
                         <td>
@@ -43,7 +43,7 @@
             {% endif %}
     
             <span class="current">
-                Página {{ prestamo.number }} de {{ prestamo.paginator.num_pages }}.
+                Página {{ prestamos.number }} de {{ prestamos.paginator.num_pages }}.
             </span>
     
             {% if prestamos.has_next %}

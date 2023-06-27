@@ -8,10 +8,7 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        ('cliente', '0007_alter_cliente_active'),
-        ('libro', '0007_alter_libro_autor_alter_libro_genero'),
-    ]
+    
 
     operations = [
         migrations.CreateModel(

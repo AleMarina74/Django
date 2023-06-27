@@ -1,27 +1,11 @@
-"""
-URL configuration for BiblioHub project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 from .views import home, user_login, user_signup, user_logout, profile
-from apps.cliente.views import clients, client,ClientesTemplateView,ClienteCreate,ClienteUpdate,ClienteDetail,ClienteDelete
-from apps.libro.views import BooksTemplateView, book, BookTemplateView, BookCreate, BookDelete,BookDetail,BookList,BookUpdate
-from apps.autor.views import  Autor, AutorCreate,AutorDetail,AutorList,AutorUpdate
-from apps.genero.views import  Genero, GeneroCreate,GeneroDetail,GeneroList,GeneroUpdate
-from apps.prestamo.views import PrestamoCreate, PrestamoDetail, PrestamoList, PrestamoUpdate, prestamosviews, prestamoviews, PrestamoCreateView, DevolucionCreateView
+from apps.cliente.views import client,ClientesTemplateView,ClienteCreate,ClienteUpdate,ClienteDelete
+from apps.libro.views import BooksTemplateView, BookTemplateView, BookCreate, BookDelete,BookDetail,BookList,BookUpdate
+from apps.autor.views import  AutorCreate,AutorDetail,AutorList,AutorUpdate
+from apps.genero.views import  GeneroCreate,GeneroDetail,GeneroList,GeneroUpdate
+from apps.prestamo.views import PrestamoDetail, PrestamoList,prestamoviews, PrestamoCreateView, DevolucionCreateView, PrestamosTemplateView
 
 urlpatterns = [
     path('', home, name='home'),
@@ -35,7 +19,6 @@ urlpatterns = [
     path('clientes/',ClientesTemplateView.as_view(), name='clients'),
     path('clientes/<int:id>', client, name='client'),
     path('cliente/create/', ClienteCreate.as_view(), name='createclient'),
-    #path('cliente/<int:id>/', ClienteDetail.as_view(), name='detailclient'),
     path('cliente/<int:pk>/update/', ClienteUpdate.as_view(), name='updateclient'),
     path('cliente/<int:pk>/delete/', ClienteDelete.as_view(), name='deleteclient'),
     path('autor/list/',AutorList.as_view(), name='listautor'),
@@ -46,7 +29,7 @@ urlpatterns = [
     path('genero/create/', GeneroCreate.as_view(), name='creategenero'),
     path('genero/<int:pk>/detail/',GeneroDetail.as_view(), name='detailgenero'),
     path('genero/<int:pk>/update/', GeneroUpdate.as_view(), name='updategenero'),
-    path('prestamos/', prestamosviews, name='prestamos'),
+    path('prestamos/', PrestamosTemplateView.as_view(), name='prestamos'),
     path('prestamos/<int:id>', prestamoviews, name='prestamo'),
     path('prestamo/list/',PrestamoList.as_view(), name='listprestamo'),
     path('prestamo/create/', PrestamoCreateView.as_view(), name='createprestamo'),

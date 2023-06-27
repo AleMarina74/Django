@@ -1,4 +1,3 @@
-from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -6,6 +5,8 @@ from django.views.generic.base import TemplateView
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from ..autor.models import Autor
+from ..genero.models import Genero
 
 from .models import Libro
 
@@ -26,6 +27,7 @@ def book(request, id):
     return BookTemplateView.as_view()(request, id=id)
 
 
+
 class BooksTemplateView(TemplateView,LoginRequiredMixin):
     template_name = 'books.html'
     paginate_by = 10
@@ -34,23 +36,39 @@ class BooksTemplateView(TemplateView,LoginRequiredMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         books = Libro.objects.filter(borrado=False).order_by('titulo')
-        paginator = Paginator(books,self.paginate_by)
-        page_number = self.request.GET.get("page") 
-        context['books']= paginator.get_page(page_number)
+
+        # Obtener parámetros de la URL
+        search_query = self.request.GET.get("search")
+        genre_filter = self.request.GET.get("genre")
+        author_filter = self.request.GET.get("author")
+
+        # Aplicar los filtros si están presentes
+        if search_query:
+            books = books.filter(titulo__icontains=search_query)
+        if genre_filter:
+            books = books.filter(genero__nombre=genre_filter)
+        if author_filter:
+            books = books.filter(autor__nombre=author_filter)
+
+        paginator = Paginator(books, self.paginate_by)
+        page_number = self.request.GET.get("page")
+        context['books'] = paginator.get_page(page_number)
         context['USER'] = self.request.user
         context['page_heading'] = 'Libros'
-       # context["field_keys"] = [field for field in Libro._meta.get_fields()]
+
         fields = [
-        {'name': 'titulo', 'label': 'Título', 'show': True},
-        {'name': 'autor', 'label': 'Autor', 'show': False},
-        {'name': 'genero', 'label': 'Género', 'show': False},
-        {'name': 'isbn', 'label': 'ISBN', 'show': True},
-        {'name': 'disponible', 'label': 'Disponible', 'show': True},
-    ]
+            {'name': 'titulo', 'label': 'Título', 'show': True},
+            {'name': 'autor', 'label': 'Autor', 'show': False},
+            {'name': 'genero', 'label': 'Género', 'show': False},
+            {'name': 'isbn', 'label': 'ISBN', 'show': True},
+            {'name': 'disponible', 'label': 'Disponible', 'show': True},
+        ]
 
         context['fields'] = fields
+        context['authors'] = Autor.objects.all()
+        context['genres'] = Genero.objects.all()
+        context['clear_url'] = reverse_lazy('books')
         return context
-
     
 
 class BookTemplateView(TemplateView,LoginRequiredMixin):

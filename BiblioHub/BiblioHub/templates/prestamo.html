@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3>{{ prestamo.libro }} - {{ prestamo.cliente }}</h3>
-    <br>
-
-    <ol>
-        <li><label> DNI: </label>{{ prestamo.fecha_prestamo }}</li>
-        <li><label> e-mail: </label>{{ prestamo.fecha_devolcuion }}</li>
-        
+    <div class="container">
+        <h3>{{ prestamo.libro }} - {{ prestamo.cliente }}</h3>
         <br>
-        {% if prestamo.devolucion %}
-            <li><label> DEVOLUCION: El libro ha sido devuelto por el cliente </label> </li>
-        {% else%}
-            <li><label> DEVOLUCION: El libro no ha sido devuelto por el cliente</label> </li>
-        {%endif%}
-        
-    </ol>
-    <a href="{% url 'updateprestamo' prestamo.id %}" class="button">Devolver Libro Prestado</a>
-    <a href="{% url 'prestamos' %}" class="button">Cancelar</a>
 
+        <ol>
+            <li><label> DNI: </label>{{ prestamo.cliente.dni }}</li>
+            <li><label> Fecha Prestamo: </label>{{ prestamo.fecha_prestamo }}</li>
+            
+            <br>
+            {% if prestamo.devolucion %}
+                <li><label> DEVOLUCION: El libro ha sido devuelto por el cliente </label> </li>
+            {% else%}
+                <li><label> DEVOLUCION: El libro no ha sido devuelto por el cliente</label> </li>
+            {%endif%}
+            
+        </ol>
+        <a href="{% url 'updateprestamo' prestamo.id %}" class="button">Devolver Libro Prestado</a>
+        <a href="{% url 'prestamos' %}" class="button">Cancelar</a>
+    </div>
 {% endblock %}
