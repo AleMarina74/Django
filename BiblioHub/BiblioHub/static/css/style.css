@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,95 +10,95 @@ a {
 
 a,
 a:active,
-a:visited{
-  color: #1D5978;
+a:visited {
+    color: #1D5978;
 }
 
-a:hover:not(.button){
+a:hover:not(.button) {
     text-decoration: underline;
 }
 
-a.button{
-  background-color: #1D5978;
-  color: white;
-  padding: 4px 16px;
-  border-radius: 5px;
+a.button {
+    background-color: #1D5978;
+    color: white;
+    padding: 4px 16px;
+    border-radius: 5px;
 }
 
-a.button i{
-  margin-right: 8px;
+a.button i {
+    margin-right: 8px;
 }
 
-body{
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #1D5978;
     position: relative;
     min-height: 100vh;
 }
 
-header{
+header {
     position: relative;
     background-color: white;
     color: #1D5978;
 }
 
-header nav h1{
+header nav h1 {
     font-size: 28px;
 }
 
 header nav,
-header nav > ul,
+header nav>ul,
 footer,
-footer > ul{
+footer>ul {
     display: flex;
     justify-content: space-between;
 }
 
-header nav > ul{
+header nav>ul {
     justify-content: flex-end;
 }
 
-header nav > ul > li.has--submenu{
-  background-color: #1D5978;
-  padding: 4px 16px;
-  border-radius: 5px;
-  position: relative;
+header nav>ul>li.has--submenu {
+    background-color: #1D5978;
+    padding: 4px 16px;
+    border-radius: 5px;
+    position: relative;
 }
 
-header nav ul.sub--menu{
-  background-color: #1D5978;
-  position: absolute;
-  color: white;
-  z-index: 1;
-  top: 28px;
-  left: 0;
-  width: 100%;
-  padding-bottom: 8px;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+header nav ul.sub--menu {
+    background-color: #1D5978;
+    position: absolute;
+    color: white;
+    z-index: 1;
+    top: 28px;
+    left: 0;
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
-header nav ul.sub--menu > li{
-  padding: 4px 8px;
+header nav ul.sub--menu>li {
+    padding: 4px 8px;
 }
 
-header nav ul.sub--menu > li > a{
-  color: white;
-  font-size: 16px;
+header nav ul.sub--menu>li>a {
+    color: white;
+    font-size: 16px;
 }
 
-header nav > ul a{
+header nav>ul a {
     font-size: 20px;
 }
 
-header nav{
+header nav {
     padding: 20px 40px;
     height: 40px;
     align-items: center;
 }
 
-header nav > ul,
-footer > ul{
+header nav>ul,
+footer>ul {
     width: 100%;
     list-style: none;
     padding: 20px 40px;
@@ -107,32 +107,32 @@ footer > ul{
     font-size: 20px;
 }
 
-header nav > ul > li,
-footer > ul > li{
+header nav>ul>li,
+footer>ul>li {
     padding: 0 20px;
     align-self: center;
 }
 
-header nav .logo{
+header nav .logo {
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 50px;
 }
 
-header nav .logo img{
+header nav .logo img {
     max-width: 100%;
     max-height: 100%;
     display: block;
 }
 
-header .banner{
+header .banner {
     position: relative;
     text-align: right;
     height: 160px;
     padding-top: 40px;
 }
 
-header .banner h2{
+header .banner h2 {
     position: absolute;
     top: calc(50% - 48px);
     left: 0;
@@ -142,30 +142,46 @@ header .banner h2{
     text-align: left;
 }
 
-header .banner img{
+header .banner img {
     padding-right: 40px;
     max-width: 100%;
     height: 100%;
 }
 
-main{
+main {
     height: auto;
     padding-bottom: 2.5rem;
+    margin: 0 auto;
+    width: 900px;
 }
 
-main h3{
-  padding: 8px 16px;
-  text-align: center;
-  text-transform: capitalize;
-  font-size: 36px;
-  color: white;
+main h3 {
+    padding: 8px 16px;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 36px;
+    color: white;
 }
 
-footer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+}
+
+.create-button-container {
+    width: 100%;
+}
+
+.create-button-container a {
+    background-color: white;
+    font-weight: 700;
+    color: #1C6EA4;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 8px;
+    margin-bottom: -10px;
 }
 
 /* table */
@@ -174,125 +190,192 @@ table {
     background-color: #EEEEEE;
     text-align: left;
     border-collapse: collapse;
-    width: 720px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 16px;
-  }
-table td, table th {
-  border: 1px solid #AAAAAA;
-  padding: 3px 2px;
+    clear: both;
 }
+
+table td,
+table th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+}
+
 table tbody td {
-  font-size: 16px;
-  padding: 8px;
+    font-size: 16px;
+    padding: 8px;
 }
+
 table tr:nth-child(even) {
-  background: #D0E4F5;
+    background: #D0E4F5;
 }
+
 table thead {
-  background: #1C6EA4;
-  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-  border-bottom: 2px solid #444444;
+    background: #1C6EA4;
+    background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    border-bottom: 2px solid #444444;
 }
+
 table thead th {
-  text-transform: capitalize;
-  font-size: 18px;
-  font-weight: bold;
-  color: #FFFFFF;
-  border-left: 2px solid #D0E4F5;
-  text-align: center;
-  padding: 8px;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+    text-align: center;
+    padding: 8px;
 }
+
 table thead th:first-child {
-  border-left: none;
+    border-left: none;
 }
 
 table tfoot {
-  font-size: 14px;
-  font-weight: bold;
-  color: #FFFFFF;
-  background: #D0E4F5;
-  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-  border-top: 2px solid #444444;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #D0E4F5;
+    background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    border-top: 2px solid #444444;
 }
+
 table tfoot td {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 table tfoot .links {
-  text-align: right;
+    text-align: right;
 }
-table tfoot .links a{
-  display: inline-block;
-  background: #1C6EA4;
-  color: #FFFFFF;
-  padding: 2px 8px;
-  border-radius: 5px;
+
+table tfoot .links a {
+    display: inline-block;
+    background: #1C6EA4;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
 }
 
 /* form */
-form{
-  margin: 0 auto;
-  width: 320px;
-  padding: 40px;
-  color: white;
+form {
+    margin: 0 auto;
+    width: 480px;
+    padding: 40px;
+    color: white;
 }
 
-form > fieldset{
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 16px;
-  border: none;
+form>fieldset,
+form>div {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    border: none;
 }
 
-form > fieldset > label{
-  margin-bottom: 2px;
+form>fieldset>label,
+form>div>label {
+    margin-bottom: 2px;
 }
 
-form > fieldset > label.required:after {
-  content: '*';
-  color: red;
+form>fieldset>label.required:after {
+    content: '*';
+    color: red;
 }
 
-form > fieldset > input{
-  height: 28px;
-  font-size: 16px;
-  text-indent: 4px;
-}
-form > fieldset > input:focus-visible {
-  outline: none;
-}
-
-form > input[type="submit"]{
-  color: white;
-  background: #1C6EA4;
-  font-size: 20px;
-  padding: 4px 8px;
-  width: 100%;
-  margin-top: 8px;
-  border-radius: 4px;
-  border: 2px solid white;
-  font-weight: bold;
-  cursor: pointer;
+form>fieldset>input,
+form>div>input,
+form>fieldset>select,
+form>div>select {
+    height: 28px;
+    font-size: 16px;
+    text-indent: 4px;
 }
 
-div.pagination{
-  text-align: center;
-  width: 720px;
-  margin-top: 16px;
-  margin: 0 auto;
+form>fieldset>input[type='checkbox'],
+form>div>input[type='checkbox'] {
+    align-self: baseline;
 }
 
-div.pagination span{
-  color: white;
+form>fieldset>input:focus-visible,
+form>div>input:focus-visible {
+    outline: none;
 }
 
-div.pagination a{
-  color: white;
-  text-decoration: underline;
-  font-weight: bold;
+form>input[type="submit"],
+form>button[type="submit"],
+form>a.cancel {
+    color: white;
+    background: #1C6EA4;
+    font-size: 20px;
+    padding: 4px 8px;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border: 2px solid white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
+form>a.cancel {
+    background: orange;
+    color: #1D5978;
+    display: block;
+    text-align: center;
+}
+
+div.pagination {
+    text-align: center;
+    width: 720px;
+    margin-top: 16px;
+    margin: 0 auto;
+}
+
+div.pagination span {
+    color: white;
+}
+
+div.pagination a {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+div.action-button-bar,
+div.details {
+    line-height: 1.8;
+    display: flex;
+    width: 762px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+div.details {
+    flex-direction: column;
+}
+
+div.details p {
+    color: #D0E4F5;
+    font-size: 18px;
+}
+
+div.action-button-bar {
+    margin-top: 20px;
+    text-align: center;
+}
+
+div.details p span {
+    font-weight: 700;
+}
+
+div.action-button-bar a {
+    width: 100%;
+    background-color: #1D5978;
+    color: #D0E4F5;
+    font-size: 20px;
+    font-weight: 700;
+}

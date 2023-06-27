@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-
+    {% include 'create_button.html' with url_name='createbook' text='Nuevo libro' %}  
+    
     <form method="GET" action="{% url 'books' %}">
-        <input type="text" name="search" placeholder="Buscar por título" value="{{ request.GET.search }}">
-        <select name="genre">
-            <option value="">Todos los géneros</option>
-            {% for genre in genres %}
-                <option value="{{ genre.nombre }}" {% if request.GET.genre == genre.nombre %}selected{% endif %}>{{ genre.nombre }}</option>
-            {% endfor %}
-        </select>
-        <select name="author">
-            <option value="">Todos los autores</option>
-            {% for author in authors %}
-                <option value="{{ author.nombre }}" {% if request.GET.author == author.nombre %}selected{% endif %}>{{ author.nombre }}</option>
-            {% endfor %}
-        </select>
+        <fieldset>
+            <input type="text" name="search" placeholder="Buscar por título" value="{{ request.GET.search }}">
+        </fieldset>
+        <fieldset>
+            <select name="genre">
+                <option value="">Todos los géneros</option>
+                {% for genre in genres %}
+                    <option value="{{ genre.nombre }}" {% if request.GET.genre == genre.nombre %}selected{% endif %}>{{ genre.nombre }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <fieldset>
+            <select name="author">
+                <option value="">Todos los autores</option>
+                {% for author in authors %}
+                    <option value="{{ author.nombre }}" {% if request.GET.author == author.nombre %}selected{% endif %}>{{ author.nombre }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
         <button type="submit">Buscar</button>
-        <button type="button" onclick="window.location.href='{{ request.path }}'">Limpiar</button>
+        <a class="cancel" type="button" onclick="window.location.href='{{ request.path }}'">Limpiar</a>
     </form>
 
     <table>
@@ -73,6 +79,5 @@
                 <a href="?page={{ books.paginator.num_pages }}">última &raquo;</a>
             {% endif %}
         </span>
-    </div>
-    <a href="{% url 'createbook' %}" class="button">Nuevo libro</a>    
+    </div>  
 {% endblock %}

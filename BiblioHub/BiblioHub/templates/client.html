@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3>{{ client.nombre }} {{ client.apellido }}</h3>
-    <br>
-
-    <ol>
-        <li><label> DNI: </label>{{ client.dni }}</li>
-        <li><label> e-mail: </label>{{ client.email }}</li>
-        <li><label> DOMICILIO: </label>{{ client.domicilio|default_if_none:"Sin información"|default:"Sin información" }}</td>
-        <br>
+    <div class="details">
+        <h3>{{ client.nombre }} {{ client.apellido }}</h3>
+        <p><span>DNI:</span> {{ client.dni }} </p>
+        <p><span>Fecha de Nacimiento:</span> {{ client.fecha_nacimiento }} </p>
+        <p><span> DOMICILIO: </span>{{ client.domicilio|default_if_none:"Sin información"|default:"Sin información" }}</p>
+        <p><span>e-mail:</span> {{ client.email }}</p>
         {% if client.disponible %}
-            <li><label> DISPONIBILIDAD: Puede retirar libro </label> </li>
+            <p><span> DISPONIBILIDAD: Puede retirar libro </span> </p>
         {% else%}
-            <li><label> DISPONIBILIDAD: No puede solicitar otro libro</label> </li>
+            <p><span> DISPONIBILIDAD: No puede solicitar otro libro</span> </p>
         {%endif%}
-        
-    </ol>
-    <a href="{% url 'updateclient' client.id %}" class="button">Editar</a>
-    <a href="{% url 'deleteclient' client.id %}" class="button">Eliminar</a>
-    <a href="{% url 'clients' %}" class="button">Cancelar</a>
+    </div>
+
+    <div class="action-button-bar">
+        <a href="{% url 'updateclient' client.id %}" class="button">Editar</a>
+        <a href="{% url 'deleteclient' client.id %}" class="button">Eliminar</a>
+        <a href="{% url 'clients' %}" class="button">Cancelar</a>  
+    </div>
 {% endblock %}

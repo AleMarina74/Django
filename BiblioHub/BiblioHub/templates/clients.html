@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% include 'create_button.html' with url_name='createclient' text='Nuevo Cliente' %}
 
     <form method="GET" action="{% url 'clients' %}">
-        <input type="text" name="search" placeholder="Buscar por DNI" value="{{ request.GET.search }}">
+        <fieldset>
+            <input type="text" name="search" placeholder="Buscar por DNI" value="{{ request.GET.search }}">
+        </fieldset>
         <button type="submit">Buscar</button>
-        <button type="button" onclick="window.location.href='{{ request.path }}'">Limpiar</button>
+        <a class="cancel" type="button" onclick="window.location.href='{{ request.path }}'">Limpiar</a>
     </form>
 
     <table>
@@ -59,5 +62,4 @@
             {% endif %}
         </span>
     </div>
-    <a href="{% url 'createclient' %}" class="button">Nuevo Cliente</a>
 {% endblock %}

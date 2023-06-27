@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
-
+{% block heading_2 %}
+    {% if libro %}{{ libro.titulo }}{% else %}Nuevo libro{% endif %}
+{% endblock %}
 {% block content %}
-    <h3>Crear/Actualizar Libro</h3>
 
+    <h3>
+        {% if libro %}Actualizar{% else %}Crear{% endif %}
+        Libro
+    </h3>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_div }}
         <button type="submit">Guardar</button>
-        <a href="{% url 'books' %}" class="button">Cancelar</a>
-        <a href="{% url 'createautor' %}" class="button">Nuevo Autor</a>
-        <a href="{% url 'creategenero' %}" class="button">Nuevo Genero</a>
+        {% if libro %}
+            <a class="cancel" href="#" onclick="history.back()">Cancelar</a>
+        {% else %}
+            <a href="{% url 'books' %}" class="cancel">Cancelar</a>
+        {% endif %}
+        {% include 'create_button.html' with url_name='createautor' text='Nuevo Autor' %}
+        {% include 'create_button.html' with url_name='creategenero' text='Nuevo Genero' %}
     </form>
 {% endblock %}
