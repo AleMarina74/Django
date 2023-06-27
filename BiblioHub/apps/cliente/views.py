@@ -94,7 +94,7 @@ class ClienteUpdate(LoginRequiredMixin, UpdateView):
 
 class ClienteDelete(LoginRequiredMixin, DeleteView):
     model = Cliente
-    template_name = 'cliente_confirm_delete.html'
+    template_name = 'client_confirm_delete.html'
     success_url = reverse_lazy('clients')
 
 

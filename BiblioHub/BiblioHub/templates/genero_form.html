@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 
+{% block heading_2 %}
+    {% if genero %}{{ genero.nombre }}{% else %}Nuevo genero{% endif %}
+{% endblock %}
 {% block content %}
-    <h3>Crear/Actualizar Genero</h3>
+    <h3>
+        {% if genero %}Actualizar{% else %}Crear{% endif %}
+        Genero
+    </h3>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_div }}
         <button type="submit">Guardar</button>
-        <a href="{% url 'books' %}" class="button">Cancelar</a>
+        <a class="cancel" href="{% url 'createbook' %}" class="button">Cancelar</a>
         
     </form>
 {% endblock %}

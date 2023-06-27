@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
-
+{% block heading_2 %}
+    {% if cliente %}{{ cliente.nombre }} {{ cliente.apellido }}{% else %}Nuevo cliente{% endif %}
+{% endblock %}
 {% block content %}
-    <h3>Crear/Actualizar Cliente</h3>
+    <h3>
+        {% if cliente %}Actualizar{% else %}Crear{% endif %}
+        Cliente
+    </h3>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_div }}
         <button type="submit">Guardar</button>
-        <a href="{% url 'clients' %}" class="button">Cancelar</a>
+        {% if cliente %}
+            <a class="cancel" href="#" onclick="history.back()">Cancelar</a>
+        {% else %}
+            <a class="cancel" href="{% url 'clients' %}">Cancelar</a>
+        {% endif %}
     </form>
 {% endblock %}

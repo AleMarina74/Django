@@ -54,7 +54,11 @@ APPS_SISTEMAS =[
     'apps.prestamo',
 ] 
 
-INSTALLED_APPS= DJANGO_APPS + APPS_SISTEMAS
+THRID_PARTY_APPS = [
+    'fontawesomefree',
+]
+
+INSTALLED_APPS= DJANGO_APPS + APPS_SISTEMAS + THRID_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

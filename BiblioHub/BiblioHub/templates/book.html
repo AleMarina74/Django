@@ -1,22 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3>{{ book.titulo }}</h3>
-    
-    <br>
-    <ol>
-        <li><label> AUTOR: </label>{{ book.autor.nombre }}</li>
-        <li><label> GENERO: </label>{{ book.genero.nombre }}</li>
-        <li><label> ISBN: </label>{{ book.isbn }}</td>
-        <br>
+    <div class="details">
+        <h3>{{ book.titulo }}</h3>
+        <p><span>AUTOR:</span> {{ book.autor.nombre }} </p>
+        <p><span>GENERO:</span> {{ book.genero.nombre }} </p>
+        <p><span>ISBN: </span>{{ book.isbn }}</p>
         {% if book.disponible %}
-            <li><label> DISPONIBILIDAD: Disponible </label> </li>
+            <p><span> DISPONIBILIDAD: Disponible </span> </p>
         {% else%}
-            <li><label> DISPONIBILIDAD: No disponible</label> </li>
+            <p><span> DISPONIBILIDAD: No disponible</span> </p>
         {%endif%}
-        
-    </ol>
-    <a href="{% url 'updatebook' book.id %}" class="button">Editar</a>
-    <a href="{% url 'deletebook' book.id %}" class="button">Eliminar</a>
-    <a href="{% url 'books' %}" class="button">Cancelar</a>
+    </div>
+
+    <div class="action-button-bar">
+        <a href="{% url 'updatebook' book.id %}" class="button">Editar</a>
+        <a href="{% url 'deletebook' book.id %}" class="button">Eliminar</a>
+        <a href="{% url 'books' %}" class="button">Cancelar</a>
+    </div>
 {% endblock %}
