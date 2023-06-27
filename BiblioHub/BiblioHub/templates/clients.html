@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+    <form method="GET" action="{% url 'clients' %}">
+        <input type="text" name="search" placeholder="Buscar por DNI" value="{{ request.GET.search }}">
+        <button type="submit">Buscar</button>
+        <button type="button" onclick="window.location.href='{{ request.path }}'">Limpiar</button>
+    </form>
+
     <table>
         <thead>
             <tr>
