@@ -17,7 +17,7 @@
                         <td>{{ client.nombre}}</td>
                         <td><a href="{% url 'client' id=client.id %}">{{ client.apellido }}</a></td>
                         <td>{{ client.dni}}</td>
-                        <td>{{ client.domicilio }}</td>
+                        <td>{{ client.domicilio|default_if_none:"Sin información"|default:"Sin información" }}</td>
                         <td>
                             {% if client.disponible %}
                                 <input type="checkbox" checked disabled>
