@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
- 
-{% block content %}
-    {% include 'create_button.html' with url_name='createbook' text='Nuevo libro' %}
 
+{% block content %}
     <table>
         <thead>
             <tr>
-                {% for key in field_keys %}
-                    <th>{{ key }}</th>
+                {% for field in fields %}
+                    
+                    <th>{{ field.name }}</th>
+                    
                 {% endfor %}
             </tr>
         </thead>
@@ -15,18 +15,11 @@
             {% if books|length %}
                 {% for book in books %}
                     <tr>
-                        <td>{{ book.id }}</td>
-                        <td><a href="{% url 'detailbook' pk=book.id %}">{{ book.titulo }}</a></td>
+                        
+                        <td><a href="{% url 'book' id=book.id %}">{{ book.titulo }}</a></td>
                         <td>{{ book.autor.nombre }}</td>
                         <td>{{ book.genero.nombre }}</td>
                         <td>{{ book.isbn }}</td>
-                        <td>
-                            {% if book.borrado %}
-                                <input type="checkbox" checked disabled>
-                            {% else %}
-                                <input type="checkbox" disabled>
-                            {% endif %}
-                        </td>
                         <td>
                             {% if book.disponible %}
                                 <input type="checkbox" checked disabled>
@@ -61,4 +54,5 @@
             {% endif %}
         </span>
     </div>
+    <a href="{% url 'createbook' %}" class="button">Nuevo libro</a>    
 {% endblock %}

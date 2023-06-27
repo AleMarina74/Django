@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
+{% block heading_2 %}{{ libro }}{% endblock %}
+
 {% block content %}
     <h3>Crear/Actualizar Libro</h3>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_div }}
         <button type="submit">Guardar</button>
-        <a href="{% url 'books' %}" class="button">Cancelar</a>
-        <a href="{% url 'createautor' %}" class="button">Nuevo Autor</a>
-        <a href="{% url 'creategenero' %}" class="button">Nuevo Genero</a>
+        {% if libro %}
+            <a class="cancel" href="#" onclick="history.back()">Cancelar</a>
+        {% endif %}
     </form>
 {% endblock %}

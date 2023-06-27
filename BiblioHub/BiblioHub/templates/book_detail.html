@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
-
+{% block heading_2 %}{{ book.titulo }}{% endblock %}
 {% block content %}
     {% csrf_token %}
-    <h1>Detalle del Libro</h1>
-    <br>
+    <h3>Detalle del Libro</h3>
    
-        <p>Título: {{ book.titulo }}</p>
-        <p>Autor: {{ book.autor.nombre }}</p>
-        <p>Genero: {{ book.genero.nombre }} </p>
-        <p>Isbn: {{ book.isbn }}</p>
-        <p>Borrado: {{ book.borrado }}</p>
-        <p>Disponible: {{ book.disponible }}</p>
-        <br>
+    <div class="details">
+        <p><span>Título:</span> {{ book.titulo }}</p>
+        <p><span>Autor:</span> {{ book.autor.nombre }}</p>
+        <p><span>Genero:</span> {{ book.genero.nombre }} </p>
+        <p><span>Isbn:</span> {{ book.isbn }}</p>
+        <p><span>Borrado:</span> {{ book.borrado }}</p>
+        <p><span>Disponible:</span> {{ book.disponible }}</p>
+    </div>
 
+    <div class="action-button-bar">
         <a href="{% url 'updatebook' book.id %}" class="button">Editar</a>
         <a href="{% url 'deletebook' book.id %}" class="button">Eliminar</a>
-        <a href="{% url 'books' %}" class="button">Cancelar</a>
+    </div>
 {% endblock %}

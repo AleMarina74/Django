@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% include 'create_button.html' with url_name='createclient' text='Nuevo Cliente' %}
-    
     <table>
         <thead>
             <tr>
-                {% for key in field_keys %}
-                    <th>{{ key }}</th>
+                {% for field in fields %}
+                    <th>{{ field.name }}</th>
                 {% endfor %}
             </tr>
         </thead>
@@ -15,21 +13,23 @@
             {% if clients|length %}
                 {% for client in clients %}
                     <tr>
-                        <td>{{ client.id }}</td>
+                        
                         <td>{{ client.nombre}}</td>
-                        <td><a href="{% url 'detailclient' pk=client.id %}">{{ client.apellido }}</a></td>
-                        <td>{{ client.dni }}</td>
-                        <td>{{ client.celular }}</td>
-                        <td>{{ client.domicilio }}</td>
-                        {% if client.estado > 0 %}
-                            <td>{{ client.estado }}</td>
-                            <td>{{ client.ISBN }}</td>
-                        {% endif %}
+                        <td><a href="{% url 'client' id=client.id %}">{{ client.apellido }}</a></td>
+                        <td>{{ client.dni}}</td>
+                        <td>{{ client.domicilio|default_if_none:"Sin información"|default:"Sin información" }}</td>
+                        <td>
+                            {% if client.disponible %}
+                                <input type="checkbox" checked disabled>
+                            {% else %}
+                                <input type="checkbox" disabled>
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td colspan="{{ field_keys|length }}">No hay client</td>
+                    <td colspan="{{ field_keys|length }}">No hay clientes</td>
                 </tr>
             {% endif %}
         </tbody>
@@ -52,4 +52,5 @@
             {% endif %}
         </span>
     </div>
+    <a href="{% url 'createclient' %}" class="button">Nuevo Cliente</a>
 {% endblock %}

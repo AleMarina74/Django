@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 
+{% block heading_2 %}{{ clientes.nombre }} {{ clientes.apellido }}{% endblock %}
+
 {% block content %}
     {% csrf_token %}
     <h3>Detalle del Cliente</h3>
 
-    <p>Nombre: {{ clientes.nombre }}</p>
-    <p>Apellido: {{ clientes.apellido }}</p>
-    <p>DNI: {{ clientes.dni }} </p>
-    <p>Fecha de Nacimiento: {{ clientes.fecha_nacimiento }} </p>
-    <p>e-mail: {{ clientes.email }}</p>
+    <div class="details">
+        <p><span>Nombre:</span> {{ clientes.nombre }}</p>
+        <p><span>Apellido:</span> {{ clientes.apellido }}</p>
+        <p><span>DNI:</span> {{ clientes.dni }} </p>
+        <p><span>Fecha de Nacimiento:</span> {{ clientes.fecha_nacimiento }} </p>
+        <p><span>e-mail:</span> {{ clientes.email }}</p>
+    </div>
     
-    
-    <a href="{% url 'updateclient' clientes.id %}">Editar Cliente</a>
-    <a href="{% url 'deleteclient' clientes.id %}">Eliminar Cliente </a>
-    #<a href="{% url 'prestamo' clientes.id %}">Listar Pagos del Cliente</a>
-    <a href="{% url 'clients' %}" class="button">Cancelar</a>
+    <div class="action-button-bar">
+        <a href="{% url 'updateclient' clientes.id %}">Editar Cliente</a>
+        <a href="{% url 'deleteclient' clientes.id %}">Eliminar Cliente </a>
+    </div>
 {% endblock %}
