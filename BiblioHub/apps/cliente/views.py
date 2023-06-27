@@ -39,6 +39,15 @@ class ClientesTemplateView(LoginRequiredMixin,TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         clientes = Cliente.objects.filter(active=True).order_by('nombre')
+
+        # Obtener parámetros de la URL
+        search_query = self.request.GET.get("search")
+
+        # Aplicar los filtros si están presentes
+        if search_query:
+            clientes = clientes.filter(dni__icontains=search_query)
+
+
         paginator = Paginator(clientes,self.paginate_by)
         page_number = self.request.GET.get("page") 
         context['clients']= paginator.get_page(page_number)
